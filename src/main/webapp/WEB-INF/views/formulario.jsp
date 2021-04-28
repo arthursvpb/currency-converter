@@ -17,6 +17,10 @@ body {
 }
 
 #form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	padding: 100px;
 	font-size: 25px;
 	background: #f3f3f3;
@@ -27,13 +31,34 @@ body {
 
 	<form:form id="form" method="POST" modelAttribute="currency"
 		action="formulario">
-		<p>Valor em dolar:</p>
-		<form:input path="value" />
 
-		<form:button>Enviar</form:button>
+		<p>Valor em Euro:</p>
+		<form:input id="euro" onkeydown="clearYenInput()" placeholder="€ 0.00"
+			path="euro" value="${euro}" />
 
-		<p>Valor em real: R$ ${mensagem}</p>
+		<p>Valor em Iene:</p>
+		<form:input id="yen" onkeydown="clearEuroInput()" placeholder="¥ 0.00"
+			path="yen" value="${yen}" />
+
+		<hr />
+
+		<form:button>Converter</form:button>
 	</form:form>
 
+
 </body>
+<script>
+	function clearYenInput() {
+		const yenInput = document.getElementById('yen');
+		if (yen.value) {
+			yen.value = "";
+		}
+	}
+	function clearEuroInput() {
+		const euroInput = document.getElementById('euro');
+		if (euro.value) {
+			euro.value = "";
+		}
+	}
+</script>
 </html>

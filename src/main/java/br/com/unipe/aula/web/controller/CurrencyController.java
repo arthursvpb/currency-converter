@@ -1,5 +1,7 @@
 package br.com.unipe.aula.web.controller;
 
+import java.util.Locale;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,7 +34,16 @@ public class CurrencyController {
 		dao.save(currency);
 
 		ModelAndView view = new ModelAndView("formulario");
-		view.addObject("mensagem", Double.parseDouble(currency.getValue()) * 5.59);
+
+		String euro = currency.getEuro();
+		if (!euro.isEmpty()) {
+			view.addObject("yen", String.format(Locale.US, "%.2f", Double.parseDouble(euro) * 131.48));
+		}
+
+		String yen = currency.getYen();
+		if (!yen.isEmpty()) {
+			view.addObject("euro", String.format(Locale.US, "%.2f", Double.parseDouble(yen) * 0.0076));
+		}
 
 		return view;
 	}

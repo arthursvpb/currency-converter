@@ -2,22 +2,32 @@ package br.com.unipe.aula.model;
 
 public class Currency {
 
-	private String value;
+	private String euro;
+	private String yen;
 
 	public Currency() {
 	}
 
-	public Currency(String value) {
+	public Currency(String euro, String yen) {
 		super();
-		this.value = value;
+		this.euro = euro;
+		this.yen = yen;
 	}
 
-	public String getValue() {
-		return value;
+	public String getEuro() {
+		return euro;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public String getYen() {
+		return yen;
+	}
+
+	public void setEuro(String euro) {
+		this.euro = euro;
+	}
+
+	public void setYen(String yen) {
+		this.yen = yen;
 	}
 
 }
